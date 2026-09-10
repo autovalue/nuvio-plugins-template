@@ -1,0 +1,43 @@
+name: Build and publish providers
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  PUBLISH_BRANCH: ${{ vars.PUBLISH_BRANCH || 'gh-pages' }}
+
+jobs:
+  build:
+    if: ${{ github.repository != 'autovalue/nuvio-plugins-template' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build providers
+        run: npm run build
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: ${{ env.PUBLISH_BRANCH }}
+          force_orphan: true
+          keep_files: false

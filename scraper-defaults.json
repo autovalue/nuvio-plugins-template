@@ -1,0 +1,23 @@
+{
+    "name": "$providerName",
+    "description": "The $providerName provider.",
+    "version": "1.0.0",
+    "author": "Nuvio",
+    "supportedTypes": [
+        "movie",
+        "tv"
+    ],
+    "enabled": true,
+    "logo": "",
+    "contentLanguage": [
+        "en"
+    ],
+    "formats": [
+        "mp4",
+        "mkv",
+        "hls"
+    ],
+    "limited": false,
+    "disabledPlatforms": [],
+    "supportsExternalPlayer": true
+}

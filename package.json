@@ -6,12 +6,28 @@
         "build": "node build.js",
         "build:watch": "nodemon --watch src -e js,json --exec 'node build.js'",
         "build:provider": "node build.js",
-        "start": "node server.js"
+        "start": "node server.js",
+        "test": "jest --runInBand"
     },
+    "files": [
+        "src/**/*",
+        "manifest.json",
+        "scraper-defaults.json",
+        "README.md",
+        "LICENSE",
+        "server.js",
+        "build.js",
+        "!src/**/*.test.js",
+        "!src/**/*.spec.js"
+    ],
     "devDependencies": {
+        "@babel/core": "^7.28.0",
+        "@babel/preset-env": "^7.28.0",
+        "babel-jest": "^30.3.0",
         "cheerio": "^1.1.2",
         "cheerio-without-node-native": "^0.20.2",
-        "esbuild": "^0.20.0",
+        "esbuild": "^0.25.5",
+        "jest": "^30.3.0",
         "nodemon": "^3.0.0"
     },
     "keywords": [

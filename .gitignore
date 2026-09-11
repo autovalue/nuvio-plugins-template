@@ -75,8 +75,5 @@ logs
 tmp/
 temp/
 
-# Test files (if any)
-test/
-*.test.js
-*.spec.js
+# Build output
 /dist
